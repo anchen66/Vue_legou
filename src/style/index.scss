@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+image {
+  display: block;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+.van-nav-bar__text {
+  font-size: 22px;
+}
+
+.van-icon-arrow-left {
+  width: 22px;
+  height: 22px;
+}
+
+.van-icon-arrow-left::before {
+  font-size: 22px;
+  display: block;
+}
+
+.van-nav-bar {
+  height: 66px;
+}
+
+.van-nav-bar__content {
+  height: 66px;
+}
+
+.van-nav-bar__title {
+  font-size: 22px;
+}
+
+.van-tabs {
+  height: 63px;
+  box-sizing: border-box;
+}
+
+.van-tabs .van-tabs__wrap {
+  height: 63px;
+}
+
+.van-tab {
+  width: 85px;
+  height: 63px;
+  padding-left: 17px;
+  padding-right: 17px;
+  font-size: 20px;
+}
+
+.van-tabs__wrap--scrollable .van-tab {
+  width: 40px;
+  height: 63px;
+  padding: 10px;
+}
+
+p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
