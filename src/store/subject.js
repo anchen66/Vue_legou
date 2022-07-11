@@ -20,6 +20,9 @@ const mutations = {
   GETTOPICLISTINFO (state, data) {
     state.total = data.total
     state.list = state.list.concat(data.data)
+  },
+  CLEARLIST (state) {
+    state.list = []
   }
 }
 const getters = {

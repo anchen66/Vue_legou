@@ -7,7 +7,7 @@
       <div class="header-search">
         <a>
           <div class="icon"></div>
-          <div class="text">搜索商品</div>
+          <div class="text" @click="goSearch">搜索商品</div>
         </a>
       </div>
     </div>
@@ -80,6 +80,11 @@ export default {
       } else {
         this.$router.push({ path: '/categorylist', query: { id: id } })
       }
+    },
+    goSearch () {
+      this.$router.push({
+        path: '/search'
+      })
     }
   }
 }
@@ -166,6 +171,7 @@ export default {
         img {
           width: 41px;
           height: 41px;
+          margin: 0 auto;
         }
 
         p {

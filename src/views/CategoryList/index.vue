@@ -16,6 +16,7 @@
             </router-link>
           </li>
           <li v-if="categoryList.length%2 ===1" class="last-item"></li>
+          <li v-if="categoryList.length ===0"> 服务器暂无数据</li>
         </ul>
       </van-tab>
     </van-tabs>
@@ -32,20 +33,24 @@ export default {
     }
   },
   methods: {
+    async intGetData () {
+      await this.$store.dispatch('getCategoryNavId', this.$route.query.id)
+      this.activeName = parseInt(this.nowCategoryNavId)
+      this.getData()
+    },
     getData () {
-      this.$store.dispatch('getCategoryList', this.$route.query.id)
+      this.$store.dispatch('getCategoryList', this.activeName)
     },
     onClick () {
-      if (this.activeName !== parseInt(this.$route.query.id)) {
+      if (this.activeName !== parseInt(this.nowCategoryNavId)) {
         this.$router.replace({ path: '/categorylist', query: { id: this.activeName } })
         this.getData()
       }
     }
   },
   mounted () {
-    this.$store.dispatch('getCategoryNavId', this.$route.query.id)
-    this.getData()
-    this.activeName = parseInt(this.$route.query.id)
+    // this.$store.dispatch('getCategoryNavId', this.$route.query.id)
+    this.intGetData()
   },
   computed: {
     ...mapGetters(['nowCategoryNavId', 'allCategoryNav', 'currentNav', 'categoryList'])

@@ -67,5 +67,35 @@ export default [
     path: '/topicdetail',
     name: 'Topicdetail',
     component: () => import('@/views/Topicdetail')
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import('@/views/Order')
+  },
+  {
+    path: '/collectlist',
+    name: 'Collectlist',
+    component: () => import('@/views/Collectlist')
+  },
+  {
+    path: '/addressSelect',
+    name: 'AddressSelect',
+    component: () => import('@/views/AddressSelect')
+  },
+  {
+    path: '/feedback',
+    name: 'Feedback',
+    component: () => import('@/views/Feedback')
+  },
+  {
+    path: '/addaddress',
+    name: 'Addaddress',
+    component: () => import('@/views/Addaddress')
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('@/views/Search')
   }
 ]

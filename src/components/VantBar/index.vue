@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style>
-
+.van-nav-bar {
+  z-index: 99;
+}
 </style>

@@ -7,7 +7,7 @@ const requests = axios.create({
 
 const userInfo = {
   openId: '18351617983',
-  nickName: '赵六',
+  nickName: '王二狗子',
   avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIbWFEIJj8IpGeHM7dGic1aTFZALjWcMm9ltWfFiaQfVRYticWBfgGfzXWMt2EkJWiaicPtftHAlWxUibxQ/132'
 }
 const openId = userInfo.openId

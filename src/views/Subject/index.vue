@@ -30,23 +30,23 @@ export default {
     return {
       page: 1,
       loading: false,
-      finished: false
+      finished: true
     }
   },
   methods: {
     onLoad () {
-      setTimeout(() => {
-        if (this.page <= this.total) {
-          this.getData()
-          this.loading = false
-        } else {
-          this.finished = true
-        }
-      }, 500)
+      this.loading = true
+      if (this.page < this.total) {
+        this.page++
+        this.getData()
+      } else {
+        this.finished = true
+      }
     },
-    getData () {
-      this.$store.dispatch('getTopicListInfo', this.page)
-      this.page++
+    async getData () {
+      await this.$store.dispatch('getTopicListInfo', this.page)
+      this.finished = false
+      this.loading = false
       this.$toast.loading({
         message: '加载中...',
         duration: 300
@@ -58,6 +58,11 @@ export default {
   },
   mounted () {
     this.getData()
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$store.commit('CLEARLIST')
+    this.page = 1
+    next()
   }
 }
 </script>
@@ -65,6 +70,7 @@ export default {
 <style lang='scss' scoped>
 .subject {
   width: 750px;
+  padding-bottom: 70px;
 
   .list {
     width: 100%;

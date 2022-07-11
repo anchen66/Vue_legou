@@ -1,7 +1,7 @@
 <template>
   <van-swipe class="my-swipe" :autoplay="3000"  @change="onChange">
     <van-swipe-item v-for="(item) in banner" :key="item.id">
-      <img :src="item.image_url" />
+      <img :src="item.image_url||item.img_url" />
     </van-swipe-item>
     <template #indicator>
     <div class="custom-indicator">{{ current + 1 }}/{{banner.length}}</div>
