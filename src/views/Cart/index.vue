@@ -259,6 +259,7 @@ export default {
         width: 120px;
         text-align: center;
         line-height: 70px;
+        font-size: 24px;
       }
     }
   }

@@ -79,6 +79,10 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  img {
+    width: 100%;
+  }
 }
 
 .van-checkbox__icon {

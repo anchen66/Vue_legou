@@ -52,8 +52,14 @@
     </div>
     <div class="search-list" v-if="this.keyword.length !== 0" @click="hidden">
       <div class="list-header">
-        <div>综合</div>
-        <div>价格</div>
+        <div :class="{active:order === ''}" @click="sort('')">综合</div>
+        <div
+        :class="{active:order !== '',asc:order === 'asc',desc:order === 'desc'}"
+        class="price"
+        @click="sort('ok')">
+          <p>价格</p>
+          <span></span>
+        </div>
       </div>
       <div class="list-item">
         <li
@@ -79,19 +85,22 @@ export default {
   data () {
     return {
       keyword: '',
-      show: false
+      show: false,
+      order: ''
     }
   },
   methods: {
     search () {
-      this.$store.dispatch('getSearchHelper', { keyword: this.keyword })
+      this.$store.dispatch('getSearchHelper', { keyword: this.keyword, order: this.order })
     },
     showSuggest () {
       this.show = true
     },
+    // 隐藏关键词
     hidden () {
       this.show = false
     },
+    // 点击关键词进行搜集
     changeKeyword (name) {
       this.keyword = name
       this.show = false
@@ -99,20 +108,39 @@ export default {
       this.$store.dispatch('getSearchIndexaction', localStorage.getItem('openId'))
       this.search()
     },
+    // 点击热点搜索或历史记录前往搜索功能
     goSearch (keyword) {
       this.keyword = keyword
       this.search()
       this.show = false
     },
+    // 清空搜索框内容
     clear () {
       this.keyword = ''
     },
+    // 清除搜索历史
     async clearHistory () {
       try {
         await this.$store.dispatch('clearHistory', localStorage.getItem('openId'))
         this.$store.dispatch('getSearchIndexaction', localStorage.getItem('openId'))
       } catch (error) {
         alert(error.message)
+      }
+    },
+    // 实现排序功能
+    sort (order) {
+      if (order === '') {
+        if (this.order !== '') {
+          this.order = ''
+          this.search()
+        }
+      } else {
+        if (this.order !== 'asc') {
+          this.order = 'asc'
+        } else {
+          this.order = 'desc'
+        }
+        this.search()
       }
     }
   },
@@ -264,6 +292,38 @@ export default {
         flex: 1;
         line-height: 57px;
         text-align: center;
+      }
+
+      .active {
+        color: #b4282d;
+      }
+
+      .price {
+        display: flex;
+        justify-content: center;
+        span {
+          display: block;
+          margin-top: 15px;
+          margin-left: 5px;
+          width: 15px;
+          height: 25px;
+          background: url('./images/arrow.png') no-repeat center;
+          background-size: contain;
+        }
+      }
+
+      .asc {
+        span {
+          background: url('./images/arrow-top.png') no-repeat center;
+          background-size: contain;
+        }
+      }
+
+      .desc {
+        span {
+          background: url('./images/arrow-bottom.png') no-repeat center;
+          background-size: contain;
+        }
       }
     }
 

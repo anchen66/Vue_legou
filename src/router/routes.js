@@ -97,5 +97,10 @@ export default [
     path: '/search',
     name: 'Search',
     component: () => import('@/views/Search')
+  },
+  {
+    path: '/mappage',
+    name: 'Mappage',
+    component: () => import('@/views/Mappage')
   }
 ]

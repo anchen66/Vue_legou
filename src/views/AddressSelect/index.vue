@@ -111,7 +111,7 @@ export default {
           .isDefault {
             margin: 12px auto 0;
             line-height: 23px;
-            width: 45px;
+            width: 50px;
             border: 1Px solid #b4282d;
             color: #b4282d;
           }
